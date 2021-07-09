@@ -10,4 +10,5 @@ $ ./slots.sh
 ```shell
 $ node tabulateSlots.js
 ```
+1. If some of the requests failed, there may be an error while running this conversion. If so, you need to manually fix these. Find the problematic requests and enter them into the fixslots.sh file. Run this script. It will produce an output file called tmpslots.js. Copy and paste the data from this file into slots.js
 1. The csv file can be imported into a spreadsheet for analysis.
