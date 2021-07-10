@@ -1,6 +1,6 @@
 #!/bin/sh
 SLEEP_SECS=1
-DATE='09-07-2021'
+DATE=$(date +%d-%m-%Y) # e.g. '10-07-2021'
 OUT_FILE='slots.js'
 echo "exports.slotsRaw = [" > $OUT_FILE
 printf '{"params": {"district_id": 3, "date": "'$DATE'", "timestamp": "'$(date +%FT%H:%M:%S)'"}, "result": ' >> $OUT_FILE
