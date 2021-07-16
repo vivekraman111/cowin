@@ -1,7 +1,8 @@
 #  Download all India vaccination slots from Cowin
-Script to download all vaccination slots available in India on the specified date from [Co-WIN Public APIs](https://apisetu.gov.in/public/api/cowin/cowin-public-v2) as a CSV file
+Script to download all vaccination slots available in India on the specified date from [Co-WIN Public APIs](https://apisetu.gov.in/public/api/cowin/cowin-public-v2) as a CSV file. Sample output can be seen in this spreadsheet [https://docs.google.com/spreadsheets/d/1opxYHH0cDGh8njO8JdwvyuJDR8CKOhxfRcXtb2F0Fzw/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1opxYHH0cDGh8njO8JdwvyuJDR8CKOhxfRcXtb2F0Fzw/edit?usp=sharing)
 
 1. Install [node](https://nodejs.org/en/download/) if it's not already installed.
+1. The downloader is a bash shell script. If you are using the Windows operating system you will need to install something like [Cygwin](https://www.cygwin.com/)
 1. Clone this repository. 
 ```shell
 git clone https://github.com/vivekraman111/cowin.git
@@ -11,6 +12,7 @@ git clone https://github.com/vivekraman111/cowin.git
 cd cowin
 ```
 1. By default, the downloader script fetches data for the current date. If you want to run it for a different date, you can do so by opening slots.sh and seting the value of DATE at the top.
+1. By default, the downloader script uses the "calendarByDistrict" API of Cowin. This api returns 7 day's data. If you need only one day's data, you can use the "findByDistrict" API. To change the API, open slots.sh and seting the value of API at the top.
 1. Run slots.sh to download the data. This will download the cowin vaccination slots for all districts in India into the slots.js file. This will take around 15 minutes.
 ```shell
 ./slots.sh 
@@ -27,5 +29,7 @@ date,timestamp,state_id,state_name,district_id,district_name,center_id,name,addr
 1. The csv file can be imported into a spreadsheet for analysis.
 
 # Notes
-1. Error handling and re-try to be added
+1. Error handling and re-try to be added. The observed errors have been listed below
+ - Bad Gateway
+ - "result": {"message": "Endpoint request timed out"}
 1. Convert shell script to node js that will read the list of distrcts from districts.js. This shell script is automatically created by a spreadsheet.
